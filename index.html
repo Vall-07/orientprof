@@ -6,48 +6,70 @@
     <meta name="description" content="Portal do Futuro - O seu guia para o acesso à universidade pública. Encontre universidades, materiais de estudo e um guia passo a passo.">
     <title>Portal do Futuro - Seu Guia para a Universidade Pública</title>
     
-    <!-- Fontes (Seção 1.1) -->
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Leaflet CSS (Seção 1.1) -->
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     
-    <!-- Nosso CSS (Seção 1.1) -->
+    <!-- Nosso CSS -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Favicon (Seção 1.1) -->
+    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-    <!-- Cabeçalho (Seção 1.1) -->
+    <!-- Cabeçalho (AGORA RESPONSIVO) -->
     <header class="main-header">
         <div class="container">
-            <a href="#inicio" class="logo">Portal do Futuro</a>
+            
+            <!-- Agrupador para Logo e Toggle do Modo Escuro -->
+            <div class="header-left">
+                <a href="#inicio" class="logo">Unimapa</a>
+                
+                <!-- Botão de Alternância do Modo Escuro -->
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Alternar modo de cor (Escuro/Claro)">
+                    <!-- O ícone SVG (Sol ou Lua) será preenchido pelo JavaScript -->
+                </button>
+            </div>
+            
+            <!-- Botão Hamburguer (visível apenas em mobile) -->
+            <button id="menu-toggle" class="menu-toggle" aria-controls="main-nav-list" aria-expanded="false" title="Abrir menu de navegação">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
             <nav class="main-nav" aria-label="Navegação principal">
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
+                <ul id="main-nav-list">
+                    <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#guia">Guia</a></li>
+                    <li><a href="#universidades">Universidades</a></li>
                     <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#notas-de-corte">Notas de Corte</a></li>
+                    <li><a href="#cursinhos">Cursinhos</a></li>
+                    <li><a href="#auxilios">Auxílios</a></li>
                     <li><a href="#materiais">Materiais</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Seção Hero (Seção 1.1) -->
+        <!-- Seção Hero (Margem superior ajustada para compensar o header fixo) -->
         <section id="inicio" class="hero-section">
             <div class="container">
                 <h1>A faculdade pública é para você. A gente te mostra como.</h1>
-                <p>Um guia completo e prático, feito de aluno para aluno, focado na sua realidade e na sua região.</p>
+                <p>Um guia completo e prático, focado 100% nas universidades públicas do estado de São Paulo.</p>
                 <a href="#guia" class="cta-button">Comece seu Guia Passo a Passo</a>
             </div>
         </section>
 
-        <!-- Seção Guia (Seção 3.1) -->
+        <!-- Seção Guia -->
         <section id="guia" class="guide-section">
             <div class="container">
                 <h2>Seu Guia para a Universidade</h2>
@@ -58,13 +80,19 @@
                             Passo 1: Entendendo o Jogo
                         </button>
                         <div class="accordion-content" hidden>
-                            <p>O caminho para a universidade pública pode parecer confuso, mas se resume a três siglas principais:</p>
+                            <p>O caminho para a universidade pública pode parecer confuso, mas existem três portas de entrada principais. Entender como cada uma funciona é o primeiro passo para montar sua estratégia.</p>
                             <ul>
-                                <li><strong>ENEM (Exame Nacional do Ensino Médio):</strong> É a maior prova do país. Sua nota é a porta de entrada para a maioria das universidades federais através do SISU.</li>
-                                <li><strong>SISU (Sistema de Seleção Unificada):</strong> É a plataforma online do governo onde você usa sua nota do ENEM para concorrer a vagas em universidades públicas de todo o Brasil.</li>
-                                <li><strong>Vestibular Próprio:</strong> São provas feitas pela própria universidade, como a FUVEST (para a USP), o vestibular da UNICAMP e o da UNESP. Algumas delas, como a USP e a UNICAMP, também usam a nota do ENEM em processos seletivos separados (ENEM-USP, ENEM-UNICAMP).</li>
+                                <li>
+                                    <strong><a href="https://enem.inep.gov.br/" target="_blank" rel="noopener noreferrer">ENEM (Exame Nacional do Ensino Médio):</a></strong> É a maior prova do país. Ela é sua chave para o SISU e também é usada como parte da nota ou como processo seletivo próprio em várias universidades (como o ENEM-USP e ENEM-UNESP). É uma prova de resistência, focada em interpretação de texto e problemas contextualizados.
+                                </li>
+                                <li>
+                                    <strong><a href="https://sisu.mec.gov.br/" target="_blank" rel="noopener noreferrer">SISU (Sistema de Seleção Unificada):</a></strong> É a plataforma online do governo onde você "aposta" sua nota do ENEM para concorrer a vagas em universidades federais (UNIFESP, UFSCar, UFABC, IFSP) e algumas estaduais. Funciona como um leilão nacional de vagas, onde as notas de corte mudam diariamente.
+                                </li>
+                                <li>
+                                    <strong>Vestibulares Próprios:</strong> São provas feitas pela própria universidade, como a <strong>FUVEST</strong> (para a USP), o vestibular da <strong>UNICAMP</strong> e o da <strong>UNESP</strong> (feito pela <a href="https://www.vunesp.com.br/" target="_blank" rel="noopener noreferrer">VUNESP</a>). Elas custumam ter duas fases: a primeira de múltipla escolha (conhecimentos gerais) e a segunda com questões dissertativas e redação, mais focadas na área do seu curso.
+                                </li>
                             </ul>
-                            <p><strong>Resumo:</strong> Você pode (e deve!) prestar o ENEM para tentar o SISU e, ao mesmo tempo, prestar os vestibulares próprios das faculdades que você mais deseja, como USP, UNESP e UNICAMP.</p>
+                            <p><strong>Resumo:</strong> Você pode (e deve!) prestar o ENEM para tentar o SISU e, ao mesmo tempo, prestar os vestibulares próprios das faculdades que você mais deseja.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -74,7 +102,13 @@
                         <div class="accordion-content" hidden>
                             <p>O acesso à universidade pública no Brasil é protegido por leis que visam diminuir a desigualdade. Conheça seus principais direitos:</p>
                             <ul>
-                                <li><strong>Cotas (Ações Afirmativas):</strong> A Lei de Cotas (Lei nº 12.711/2012) reserva vagas em todas as universidades e institutos federais para estudantes que cursaram todo o ensino médio em escolas públicas. Dentro dessas vagas, há subcotas para alunos de baixa renda e para autodeclarados pretos, pardos e indígenas (PPI). Universidades estaduais (como USP, UNESP e UNICAMP) têm seus próprios sistemas de cotas, que também incluem vagas para alunos de escola pública e PPI.</li>
+                                <li>
+                                    <strong>Cotas (Ações Afirmativas):</strong> Existem dois sistemas principais:
+                                    <ul>
+                                        <li><strong>Lei de Cotas (Federais):</strong> Válida para UNIFESP, UFSCar, UFABC e IFSP. A Lei nº 12.711/2012 reserva 50% das vagas para estudantes que cursaram todo o ensino médio em escolas públicas. Dentro dessas vagas, há subcotas para alunos de baixa renda e para autodeclarados pretos, pardos e indígenas (PPI).</li>
+                                        <li><strong>Ações Afirmativas (Estaduais):</strong> USP, UNESP e UNICAMP têm seus próprios sistemas. Elas também reservam vagas para alunos de escola pública e para candidatos PPI. É fundamental ler o "Manual do Candidato" de cada uma para entender a porcentagem exata e como comprovar sua condição.</li>
+                                    </ul>
+                                </li>
                                 <li><strong>Isenção da Taxa de Inscrição:</strong> Não deixe de fazer uma prova por causa do preço! Todos os grandes vestibulares (ENEM, FUVEST, UNESP, UNICAMP) oferecem isenção total da taxa de inscrição. Geralmente, é destinada a alunos de escola pública com baixa renda familiar ou inscritos no CadÚnico. Os pedidos de isenção abrem *antes* do período normal de inscrição, então fique muito atento aos calendários!</li>
                             </ul>
                         </div>
@@ -107,7 +141,7 @@
                     </div>
                     <div class="accordion-item">
                         <button class="accordion-header" aria-expanded="false">
-                            Passo 2: Seus Direitos e Oportunidades
+                            Passo 5: O Dia da Prova e Próximos Passos
                         </button>
                         <div class="accordion-content" hidden>
                             <p>Conselhos práticos para o dia do exame: o que levar (caneta preta transparente, documento com foto, água, lanche leve) e o que não levar (celular tocando!). Depois da prova, acompanhe as listas de chamada e as listas de espera. Muita gente é chamada depois da primeira lista!</p>
@@ -118,35 +152,43 @@
             </div>
         </section>
 
-        <!-- Seção Mapa (Seção 1.1 e 2.3) -->
+        <!-- Seção Universidades -->
+        <section id="universidades" class="university-section">
+            <div class="container">
+                <h2>Explore as Universidades</h2>
+                <p>Pesquise uma universidade para ver os detalhes e localizá-la no mapa.</p>
+                
+                <div class="main-search-container">
+                    <label for="uni-search-bar" class="sr-only">Buscar universidade:</label>
+                    <input type="search" id="uni-search-bar" placeholder="Digite o nome de um campus (ex: USP São Carlos)">
+                    <div id="uni-search-results"></div>
+                </div>
+                
+                <div id="uni-info-display" aria-live="polite">
+                    <!-- O Card da universidade selecionada aparecerá aqui -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Mapa -->
         <section id="mapa" class="map-section">
             <div class="container">
-                <h2>Encontre as Universidades Perto de Você</h2>
+                <h2>Mapa Interativo dos Campi</h2>
+                <p>Use os filtros para refinar sua busca no mapa. Todos os campi listados são de instituições públicas.</p>
                 
                 <div class="map-filters" role="group" aria-labelledby="filter-label">
                     <h3 id="filter-label" class="sr-only">Filtros do Mapa</h3>
                     
-                    <!-- Filtro de Busca (Seção 2.3) -->
-                    <div class="search-group">
-                        <label for="search-uni" class="sr-only">Buscar por nome:</label>
-                        <input type="text" id="search-uni" placeholder="Buscar por nome...">
-                    </div>
-                    
-                    <!-- Filtros Checkbox (Seção 2.3) -->
-                    <fieldset class="filter-fieldset">
+                    <fieldset class="filter-fieldset" style="display: none;">
                         <legend>Tipo de Instituição</legend>
                         <div class="filter-group">
                             <input type="checkbox" id="filtro-publica" name="tipo" value="Pública" checked>
                             <label for="filtro-publica">Pública</label>
                         </div>
-                        <div class="filter-group">
-                            <input type="checkbox" id="filtro-privada" name="tipo" value="Privada">
-                            <label for="filtro-privada">Privada</label>
-                        </div>
                     </fieldset>
 
                     <fieldset class="filter-fieldset">
-                        <legend>Forma de Ingresso (se nada for marcado, mostra todos)</legend>
+                      
                         <div class="filter-group">
                             <input type="checkbox" id="filtro-sisu-check" name="ingresso" value="SISU">
                             <label for="filtro-sisu-check">Aceita SISU</label>
@@ -166,78 +208,235 @@
             </div>
         </section>
 
-        <!-- Seção Materiais (Seção 1.1 e 3.2) -->
+        <!-- Seção Notas de Corte -->
+        <section id="notas-de-corte" class="guide-section">
+            <div class="container">
+                <h2>Notas de Corte</h2>
+                <p>A "nota de corte" é a pontuação da última pessoa classificada para uma vaga. É a sua referência para saber se sua nota é competitiva. Ela muda todo ano!</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            O que é Nota de Corte? (Explicação)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>A nota de corte é a pontuação mínima que um candidato precisava ter para ser aprovado em um curso específico, em um ano específico. Ela funciona como um "leilão": as vagas são preenchidas da maior nota para a menor, e a nota do último classificado se torna a "nota de corte".</p>
+                            <!-- Link ATUALIZADO (Colégio Planck) -->
+                            <a href="https://www.cnnbrasil.com.br/educacao/nota-de-corte-o-que-sao-e-quais-os-tipos/" class="info-link" target="_blank" rel="noopener noreferrer">Entenda o conceito em detalhes (CNN)</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Links para Notas de Corte Oficiais
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Consulte as estatísticas dos anos anteriores para ter uma base:</p>
+                            <ul>
+                                <!-- Link ATUALIZADO (Meusisu) -->
+                                <li><a href="https://meusisu.com/" class="info-link" target="_blank" rel="noopener noreferrer">SISU (UNIFESP, UFSCar, UFABC, IFSP) - Notas Anteriores</a></li>
+                                <!-- Link ATUALIZADO (PDF FUVEST 2025) -->
+                                <li><a href="https://www.fuvest.br/wp-content/uploads/fuvest_2025_notas_de_corte.pdf" class="info-link" target="_blank" rel="noopener noreferrer">FUVEST (USP) - Notas de Corte 1ª Fase</a></li>
+                                <!-- Link ATUALIZADO (UNESP - Relação Candidato/Vaga) -->
+                                <li><a href="https://www2.unesp.br/sharer.php?noticia=37863" class="info-link" target="_blank" rel="noopener noreferrer">UNESP (VUNESP) - Relação Candidato/Vaga</a></li>
+                                <!-- Link ATUALIZADO (UNICAMP - Estratégia) -->
+                                <li><a href="https://vestibulares.estrategia.com/portal/noticias/vestibular-unicamp-2025-notas-de-corte-da-1a-fase/" class="info-link" target="_blank" rel="noopener noreferrer">UNICAMP (COMVEST) - Notas de Corte 1ª Fase</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Cursinhos -->
+        <section id="cursinhos" class="guide-section">
+            <div class="container">
+                <h2>Cursinhos Pré-Vestibular Gratuitos</h2>
+                <p>A preparação não precisa ser cara. Existem dezenas de projetos comunitários (muitos dentro das próprias universidades) e canais no YouTube de alta qualidade e 100% gratuitos.</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Cursinhos Comunitários e de Extensão (USP, UNESP, UNICAMP)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Esses cursinhos são projetos de extensão das próprias universidades, tocados por alunos. As inscrições abrem geralmente no início do ano.</p>
+                            <ul>
+                                <!-- Link ATUALIZADO USP -->
+                                <li><a href="https://www5.usp.br/keywords-s/cursinho-popular/" class="info-link" target="_blank" rel="noopener noreferrer">Cursinhos Populares da USP (Portal de Busca)</a></li>
+                                <!-- Link ATUALIZADO UNESP -->
+                                <li><a href="https://www2.unesp.br/portal#!/cursinhos" class="info-link" target="_blank" rel="noopener noreferrer">Cursinhos Pré-Vestibulares da UNESP (Portal Unesp)</a></li>
+                                <!-- Link ATUALIZADO UNICAMP -->
+                                <li><a href="https://www.proec.unicamp.br/malunga/malunga-curso-pre-vestibular/" class="info-link" target="_blank" rel="noopener noreferrer">Cursinhos Comunitários da UNICAMP (Portal SAE)</a></li>
+                                <!-- Link ATUALIZADO REDE (CPOP - MEC) -->
+                                <li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/perguntas-frequentes/rede-nacional-de-cursinhos-populares-cpop" class="info-link" target="_blank" rel="noopener noreferrer">Rede de Cursinhos Populares (CPOP - MEC)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Canais Gratuitos no YouTube
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Estude no seu ritmo com aulas completas e focadas nos vestibulares:</p>
+                            <ul>
+                                <li><a href="https://www.youtube.com/@matematicario" class="info-link" target="_blank" rel="noopener noreferrer">Matemática Rio (Prof. Rafael Procopio)</a></li>
+                                <!-- Link ATUALIZADO (Corrigido para @FISICATOTAL) -->
+                                <li><a href="https://www.youtube.com/@FISICATOTAL" class="info-link" target="_blank" rel="noopener noreferrer">Física Total (Prof. Ivys)</a></li>
+                                <!-- Link ATUALIZADO (Canal ID) -->
+                                <li><a href="https://www.youtube.com/user/quimicaemacao" class="info-link" target="_blank" rel="noopener noreferrer">Química em Ação (Prof. Paulo Valim)</a></li>
+                                <!-- Link ATUALIZADO (Bioexplica) -->
+                                <li><a href="https://www.youtube.com/@bioexplica" class="info-link" target="_blank" rel="noopener noreferrer">Biologia (Prof. Kennedy Ramos / Bioexplica)</a></li>
+                                <!-- Link ATUALIZADO (Canal Parabólica) -->
+                                <li><a href="https://youtube.com/@parabolica?si=K88xqT9VuOANQwmd" class="info-link" target="_blank" rel="noopener noreferrer">Parabólica (Humanas)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Auxílios -->
+        <section id="auxilios" class="guide-section">
+            <div class="container">
+                <h2>Auxílios e Permanência Estudantil</h2>
+                <p>Entrar na universidade é o primeiro passo. Permanecer nela é o objetivo. Todas as instituições públicas oferecem programas de auxílio financeiro, moradia, alimentação e apoio psicológico para estudantes de baixa renda. Conheça os principais:</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            USP (Universidade de São Paulo)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>A USP possui a Pró-Reitoria de Inclusão e Pertencimento (PRIP) que gerencia os auxílios. O principal é o PAPFE (Programa de Apoio à Permanência e Formação Estudantil), que unifica bolsas e auxílios. Ele inclui auxílio-moradia (vaga nas moradias estudantis ou auxílio financeiro), auxílio-alimentação (acesso gratuito aos restaurantes universitários) e auxílio-livros.</p>
+                            <a href="https://prip.usp.br/apoio-estudantil/" class="info-link" target="_blank" rel="noopener noreferrer">Ver Página Oficial de Auxílios da USP</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            UNESP (Universidade Estadual Paulista)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>A UNESP oferece diversos auxílios através da Coordenadoria de Permanência Estudantil (COPE). Os principais são o Auxílio Socioeconômico (ajuda financeira mensal), Auxílio Moradia (para cidades sem moradia estudantil) e o Auxílio Alimentação. Há também auxílios específicos como o Auxílio Aluguel e o Auxílio para Atividades Extracurriculares.</p>
+                            <a href="https://www.unesp.br/permanenciaestudantil" class="info-link" target="_blank" rel="noopener noreferrer">Ver Página Oficial de Auxílios da UNESP</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            UNICAMP (Universidade Estadual de Campinas)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>O Serviço de Apoio ao Estudante (SAE) da UNICAMP é responsável pelas bolsas e auxílios. O programa inclui a Bolsa Auxílio-Social (BAS), Moradia Estudantil, e isenção da taxa de alimentação nos restaurantes. A UNICAMP também é conhecida por suas Bolsas-Trabalho (como a "Bolsa Aluno-Artista") que permitem ao aluno trabalhar em projetos dentro da universidade.</p>
+                            <a href="https://www.sae.unicamp.br/servicos/bolsas-e-auxilios/" class="info-link" target="_blank" rel="noopener noreferrer">Ver Página Oficial de Auxílios da UNICAMP</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Universidades Federais (UNIFESP, UFSCar, UFABC)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Sendo federais, essas universidades seguem o PNAES (Plano Nacional de Assistência Estudantil). Elas oferecem Bolsas de Permanência, vagas em moradias (ou auxílio-moradia), e acesso aos restaurantes universitários (RUs) a preços simbólicos ou gratuitos para bolsistas. Cada universidade tem sua própria Pró-Reitoria de Assuntos Estudantis (PRAE ou similar) que gerencia os editais.</p>
+                            <ul>
+                                <li><a href="https://www.unifesp.br/propaes/auxilios" class="info-link" target="_blank" rel="noopener noreferrer">Auxílios UNIFESP</a></li>
+                                <li><a href="https://www.proace.ufscar.br/" class="info-link" target="_blank" rel="noopener noreferrer">Auxílios UFSCar</a></li>
+                                <li><a href="https://proap.ufabc.edu.br/bolsas-e-auxilios" class="info-link" target="_blank" rel="noopener noreferrer">Auxílios UFABC</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            FATEC (Faculdades de Tecnologia)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>As FATECs, ligadas ao Centro Paula Souza (CPS), oferecem auxílios como o "Bolsa Auxílio-Estágio", que remunera o estudante por estágios realizados. Além disso, os estudantes podem solicitar isenção da taxa do vestibular e têm acesso a programas de apoio. Muitas unidades também oferecem refeições a preços acessíveis.</p>
+                            <a href="https://www.cps.sp.gov.br/fatec/bolsas-e-auxilios/" class="info-link" target="_blank" rel="noopener noreferrer">Ver Página Oficial de Auxílios do CPS (FATEC)</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            IFSP (Instituto Federal de São Paulo)
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>O IFSP, por ser uma instituição federal, também participa do PNAES. A Política de Assistência Estudantil (PAE) do IFSP oferece o "Programa de Auxílio Permanência", que concede ajuda financeira mensal aos estudantes em vulnerabilidade social para custear despesas com transporte, alimentação e material didático.</p>
+                            <a href="https://www.ifsp.edu.br/component/content/article/66-assuntos/assistencia-estudantil/247-politica-de-assistencia-estudantil" class="info-link" target="_blank" rel="noopener noreferrer">Ver Página Oficial de Auxílios do IFSP</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Materiais -->
         <section id="materiais" class="materials-section">
             <div class="container">
                 <h2>Prepare-se: Provas e Datas Importantes</h2>
                 <p>Ficar de olho nas datas é o primeiro passo! Aqui está um calendário com os principais vestibulares (ciclo 2025), baseado nas informações do documento:</p>
                 
-                <!-- Tabela de Datas (Seção 3.2) -->
-                <table class="dates-table">
-                    <thead>
-                        <tr>
-                            <th>Exame</th>
-                            <th>Evento</th>
-                            <th>Data de Início</th>
-                            <th>Data de Fim</th>
-                            <th>Link Oficial</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>ENEM</td>
-                            <td>Inscrições</td>
-                            <td>26/05/2025</td>
-                            <td>13/06/2025</td>
-                            <td><a href="https://www.gov.br/inep" target="_blank" rel="noopener noreferrer">gov.br/inep</a></td>
-                        </tr>
-                        <tr>
-                            <td>ENEM</td>
-                            <td>Provas</td>
-                            <td>09/11/2025</td>
-                            <td>16/11/2025</td>
-                            <td><a href="https://www.gov.br/inep" target="_blank" rel="noopener noreferrer">gov.br/inep</a></td>
-                        </tr>
-                        <tr>
-                            <td>UNESP</td>
-                            <td>Inscrições</td>
-                            <td>04/09/2025</td>
-                            <td>10/10/2025</td>
-                            <td><a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">vestibular.unesp.br</a></td>
-                        </tr>
-                        <tr>
-                            <td>UNESP</td>
-                            <td>Prova 1ª Fase</td>
-                            <td>15/11/2025</td>
-                            <td>15/11/2025</td>
-                            <td><a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">vestibular.unesp.br</a></td>
-                        </tr>
-                        <tr>
-                            <td>UNESP</td>
-                            <td>Provas 2ª Fase</td>
-                            <td>08/12/2025</td>
-                            <td>09/12/2025</td>
-                            <td><a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">vestibular.unesp.br</a></td>
-                        </tr>
-                        <tr>
-                            <td>FATEC (1º Sem/2025)</td>
-                            <td>Inscrições</td>
-                            <td>14/11/2024</td>
-                            <td>11/12/2024</td>
-                            <td><a href="https://www.vestibularfatec.com.br" target="_blank" rel="noopener noreferrer">vestibularfatec.com.br</a></td>
-                        </tr>
-                        <tr>
-                            <td>FATEC (1º Sem/2025)</td>
-                            <td>Prova</td>
-                            <td>12/01/2025</td>
-                            <td>12/01/2025</td>
-                            <td><a href="https://www.vestibularfatec.com.br" target="_blank" rel="noopener noreferrer">vestibularfatec.com.br</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Tabela de Datas (Agora com wrapper para responsividade) -->
+                <div class="table-responsive">
+                    <table class="dates-table">
+                        <thead>
+                            <tr>
+                                <th>Exame</th>
+                                <th>Evento</th>
+                                <th>Data de Início</th>
+                                <th>Data de Fim</th>
+                                <th>Link Oficial</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ENEM</td>
+                                <td>Inscrições</td>
+                                <td>26/05/2025</td>
+                                <td>13/06/2025</td>
+                                <td><a href="https://www.gov.br/inep" target="_blank" rel="noopener noreferrer">gov.br/inep</a></td>
+                            </tr>
+                            <tr>
+                                <td>ENEM</td>
+                                <td>Provas</td>
+                                <td>09/11/2025</td>
+                                <td>16/11/2025</td>
+                                <td><a href="https://www.gov.br/inep" target="_blank" rel="noopener noreferrer">gov.br/inep</a></td>
+                            </tr>
+                            <tr>
+                                <td>UNESP</td>
+                                <td>Inscrições</td>
+                                <td>04/09/2025</td>
+                                <td>10/10/2025</td>
+                                <td><a href="https://www.vunesp.com.br/unesp" target="_blank" rel="noopener noreferrer">vunesp.com.br/unesp</a></td>
+                            </tr>
+                            <tr>
+                                <td>UNESP</td>
+                                <td>Prova 1ª Fase</td>
+                                <td>15/11/2025</td>
+                                <td>15/11/2025</td>
+                                <td><a href="https://www.vunesp.com.br/unesp" target="_blank" rel="noopener noreferrer">vunesp.com.br/unesp</a></td>
+                            </tr>
+                            <tr>
+                                <td>UNESP</td>
+                                <td>Provas 2ª Fase</td>
+                                <td>08/12/2025</td>
+                                <td>09/12/2025</td>
+                                <td><a href="https://www.vunesp.com.br/unesp" target="_blank" rel="noopener noreferrer">vunesp.com.br/unesp</a></td>
+                            </tr>
+                            <tr>
+                                <td>FATEC (1º Sem/2025)</td>
+                                <td>Inscrições</td>
+                                <td>14/11/2024</td>
+                                <td>11/12/2024</td>
+                                <td><a href="https://www.vestibularfatec.com.br" target="_blank" rel="noopener noreferrer">vestibularfatec.com.br</a></td>
+                            </tr>
+                            <tr>
+                                <td>FATEC (1º Sem/2025)</td>
+                                <td>Prova</td>
+                                <td>12/01/2025</td>
+                                <td>12/01/2025</td>
+                                <td><a href="https://www.vestibularfatec.com.br" target="_blank" rel="noopener noreferrer">vestibularfatec.com.br</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
                 <p style="margin-top: 1rem;">Além das datas, acesse os sites oficiais para baixar provas e gabaritos anteriores. Praticar com provas antigas é a melhor forma de estudar!</p>
                 
-                <!-- (Seção 3.2 Melhorada) - Estrutura de Abas -->
+                <!-- Estrutura de Abas -->
                 <p style="margin-top: 2rem;">Acesse os links oficiais para provas e gabaritos anteriores:</p>
                 
                 <div class="tabs-container">
@@ -245,6 +444,8 @@
                         <button class="tab-button active" role="tab" aria-selected="true" aria-controls="tab-content-enem" id="tab-enem">ENEM</button>
                         <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-unesp" id="tab-unesp">UNESP</button>
                         <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-fatec" id="tab-fatec">FATEC</button>
+                        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-usp" id="tab-usp">USP (FUVEST)</button>
+                        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-unicamp" id="tab-unicamp">UNICAMP</button>
                     </div>
                     
                     <div class="tabs-content">
@@ -260,7 +461,6 @@
                             <p>A UNESP aplica seu vestibular através da fundação VUNESP, que também disponibiliza as provas anteriores.</p>
                             <ul>
                                 <li><a href="https://www.vunesp.com.br/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">Acessar Provas Anteriores da VUNESP</a></li>
-                                <li><a href="https://guiadoestudante.abril.com.br/universidades/unesp-baixe-provas-e-gabaritos-de-anos-anteriores/" target="_blank" rel="noopener noreferrer">Guia do Estudante - Provas UNESP</a></li>
                             </ul>
                         </div>
                         <div class="tab-panel" id="tab-content-fatec" role="tabpanel" aria-labelledby="tab-fatec" hidden>
@@ -270,25 +470,82 @@
                                 <li><a href="https://www.vestibularfatec.com.br/anteriores/" target="_blank" rel="noopener noreferrer">Acessar Provas e Gabaritos Anteriores - FATEC</a></li>
                             </ul>
                         </div>
+                        <div class="tab-panel" id="tab-content-usp" role="tabpanel" aria-labelledby="tab-usp" hidden>
+                            <h3>Provas e Gabaritos da USP (FUVEST)</h3>
+                            <p>A FUVEST disponibiliza um acervo completo de todas as provas anteriores do seu vestibular.</p>
+                            <ul>
+                                <li><a href="https://www.fuvest.br/vestibular/provas-e-gabaritos/" target="_blank" rel="noopener noreferrer">Acessar Provas e Gabaritos Anteriores - FUVEST</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-content-unicamp" role="tabpanel" aria-labelledby="tab-unicamp" hidden>
+                            <h3>Provas e Gabaritos da UNICAMP (COMVEST)</h3>
+                            <p>A COMVEST, comissão de vestibular da UNICAMP, oferece todas as provas anteriores para download.</p>
+                            <ul>
+                                <li><a href="https://www.comvest.unicamp.br/vestibulares-anteriores/provas-e-gabaritos/" target="_blank" rel="noopener noreferrer">Acessar Provas e Gabaritos Anteriores - COMVEST</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <!-- Fim da Estrutura de Abas -->
             </div>
         </section>
+
+        <!-- Seção Depoimentos -->
+        <section id="depoimentos" class="guide-section">
+            <div class="container">
+                <h2>NÃO DESISTA</h2>
+                <p>Alunos de escolas públicas que hoje estão na universidade pública compartilham suas histórias. Acredite, é possível!</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Notícia: Mais de 55% dos alunos que ingressaram na USP em 2024 são de escolas públicas
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Foram quase 6 mil alunos de escolas públicas e cerca de 2,9 mil estudantes pretos, pardos e indígenas.</p>
+                            <!-- Link válido para notícia real -->
+                            <a href="https://jornal.usp.br/institucional/mais-de-55-de-estudantes-de-escolas-publicas-ingressaram-na-usp-em-2024/" class="info-link" target="_blank" rel="noopener noreferrer">Confira</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Notícia: Bolsas e auxílios garantem permanência de estudantes
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Além do serviço social, o SAE (UNICAMP) também oferece aos estudantes orientação educacional e apoio psicológico e psiquiátrico, faz a divulgação de oportunidades de estágio e emprego e promove ações culturais.</p>
+                            <!-- Link válido para notícia real -->
+                            <a href="https://unicamp.br/unicamp/noticias/2024/02/20/bolsas-e-auxilios-garantem-permanencia-de-estudantes/" class="info-link" target="_blank" rel="noopener noreferrer">Confira</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Notícia: Conheça história de três estudantes negros que entraram na universidade federal pela Lei de Cotas
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Alex, Lucas e Elisandra. Três universitários, três histórias parecidas. Negros ou pardos, moradores da periferia de Brasília e que não tinham a universidade federal como objetivo de vida. Pela garantia da Lei de Cotas (Lei 12.711 de 2012), também tiveram em comum o futuro transformado ao ingressarem na Universidade de Brasília (UnB) pelas cotas raciais. Não foram os alunos que entraram nos cursos, mas a universidade que entrou na vida desses estudantes por meio das cotas raciais.</p>
+                            <!-- Link válido para notícia real -->
+                            <a href="https://www.gov.br/mdh/pt-br/noticias_seppir/noticias/novembro/conheca-historia-de-tres-estudantes-negros-que-entraram-na-universidade-federal-pela-lei-de-cotas" class="info-link" target="_blank" rel="noopener noreferrer">Confira</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
-    <!-- Rodapé (Seção 1.1) -->
+    <!-- Rodapé -->
     <footer class="main-footer">
         <div class="container">
-            <p>© 2025 Portal do Futuro. Um projeto de código aberto.</p>
-            <p>Quer contribuir? <a href="https://github.com/seu-usuario/portal-do-futuro" target="_blank" rel="noopener noreferrer">Visite nosso repositório no GitHub!</a></p>
+            <p>© 2025 Unimapa. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/unimapa" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="mailto:contato@unimapa.com">Contato por E-mail</a>
+                <a href="https://github.com/seu-usuario/portal-do-futuro" target="_blank" rel="noopener noreferrer">Visite nosso GitHub!</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Scripts (Seção 1.1) -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="script.js"></script>
 </body>
 </html>
-
-

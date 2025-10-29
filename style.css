@@ -1,33 +1,66 @@
-/* style.css */
-
-/* 1. Variáveis Globais e Reset (Seção 1.2) */
+/* 1. Variáveis Globais e Reset */
 :root {
-    --cor-primaria: #005A8D;
-    --cor-secundaria: #00A8E8;
-    --cor-texto: #333;
-    --cor-fundo: #F8F9FA;
-    --cor-fundo-item: #FFFFFF;
-    --cor-borda: #DDD;
+    /* Paleta de Cores Refinada para Profissionalismo e Contraste */
+    --cor-primaria: #003366; 		/* Azul Marinho Profundo (Títulos, Textos) */
+    --cor-secundaria: #1E88E5; 		/* Azul Vibrante (Botões, Links, Acento) */
+    --cor-terciaria: #0D47A1; 		/* Azul Escuro (Hero, Rodapé) */
+    --cor-acento-claro: #E3F2FD; 	/* Novo: Acento claro para hover/active/fundo leve */
+    
+    --cor-texto: #212529; 			/* Preto quase total para alta legibilidade */
+    --cor-texto-claro: #495057; 	/* Cinza escuro para parágrafos */
+    --cor-fundo: #F4F7F9; 			/* Cinza muito claro, fundo moderno */
+    --cor-fundo-item: #FFFFFF; 		/* Branco puro para cards */
+    --cor-borda: #E0E0E0; 			/* Borda suave */
+    
     --fonte-principal: 'Lato', sans-serif;
     --fonte-titulos: 'Montserrat', sans-serif;
+
+    /* Variáveis do Modo Escuro (Default - LIGHT) */
+    --dm-fundo: var(--cor-fundo);
+    --dm-fundo-item: var(--cor-fundo-item);
+    --dm-texto: var(--cor-texto);
+    --dm-texto-claro: var(--cor-texto-claro);
+    --dm-borda: var(--cor-borda);
+    --dm-primaria: var(--cor-primaria);
+    --dm-secundaria: var(--cor-secundaria);
+    --dm-acento-claro: var(--cor-acento-claro);
 }
 
-/* Reset básico */
+/* -------------------------------------- */
+/* 5. ESTILOS DO MODO ESCURO (DARK MODE) */
+/* -------------------------------------- */
+
+body.dark-mode {
+    /* Inverte as variáveis para cores escuras */
+    --dm-fundo: #121212;
+    --dm-fundo-item: #1E1E1E;
+    --dm-texto: #E0E0E0;
+    --dm-texto-claro: #B0B0B0;
+    --dm-borda: #333333;
+    --dm-primaria: #81D4FA; /* Azul Claro para Destaque */
+    --dm-secundaria: #4FC3F7; /* Azul Mais Claro para Botões */
+    --dm-acento-claro: #2C2C2C; /* Cor de hover/seleção escura */
+    
+    background-color: var(--dm-fundo);
+    color: var(--dm-texto);
+}
+
+/* Reset básico para consistência */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
     scroll-behavior: smooth;
 }
+
+/* Elementos Gerais (aplicando variáveis DM) */
 
 body {
     font-family: var(--fonte-principal);
     line-height: 1.6;
-    color: var(--cor-texto);
-    background-color: var(--cor-fundo);
+    color: var(--dm-texto); /* Usa variável DM */
+    background-color: var(--dm-fundo); /* Usa variável DM */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -36,109 +69,7 @@ body {
     margin: 0 auto;
 }
 
-/* 2. Estilos Base (Mobile-First) (Seção 1.2) */
-
-/* Cabeçalho */
-.main-header {
-    padding: 1rem 0;
-    background-color: var(--cor-fundo-item);
-    border-bottom: 1px solid var(--cor-borda);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.main-header .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logo {
-    font-family: var(--fonte-titulos);
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--cor-primaria);
-    text-decoration: none;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--cor-primaria);
-    font-weight: bold;
-    padding: 0.5rem;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-}
-
-.main-nav a:hover,
-.main-nav a:focus {
-    background-color: var(--cor-fundo);
-}
-
-/* Seção Hero */
-.hero-section {
-    text-align: center;
-    padding: 4rem 0;
-    background-color: var(--cor-fundo-item);
-}
-
-.hero-section h1 {
-    font-family: var(--fonte-titulos);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--cor-primaria);
-}
-
-.hero-section p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: var(--cor-secundaria);
-    color: #FFF;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 1.5rem;
-    transition: transform 0.2s, background-color 0.2s;
-}
-
-.cta-button:hover {
-    background-color: var(--cor-primaria);
-    transform: translateY(-2px);
-}
-
-/* Seções Gerais */
-section {
-    padding: 3rem 0;
-}
-
-section:nth-of-type(odd):not(.hero-section) {
-    background-color: var(--cor-fundo-item);
-}
-
-section h2 {
-    text-align: center;
-    font-family: var(--fonte-titulos);
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-    color: var(--cor-primaria);
-}
-
-/* Classe de acessibilidade (usada no HTML) */
+/* Para esconder elementos de forma acessível */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -151,8 +82,459 @@ section h2 {
     border-width: 0;
 }
 
+/* Link estilizado para seções */
+.info-link {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--cor-secundaria);
+    color: #FFF;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: var(--fonte-titulos);
+    transition: background-color 0.2s;
+}
 
-/* Seção Mapa (Seção 1.2 e 2.3) */
+.info-link:hover {
+    background-color: var(--cor-terciaria);
+}
+
+
+/* 2. Estilos do CABEÇALHO (Mobile-First) */
+
+.main-header {
+    padding: 1rem 0;
+    background-color: var(--dm-fundo-item);
+    border-bottom: 1px solid var(--dm-borda);
+    position: fixed; 
+    width: 100%; 
+    top: 0;
+    z-index: 1000; 
+    transition: background-color 0.3s, border-bottom-color 0.3s;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0; 
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--dm-primaria);
+    font-family: var(--fonte-titulos);
+    font-size: 1.8rem;
+    font-weight: 700;
+    z-index: 1001; 
+    transition: color 0.3s;
+}
+
+/* Estilo do Botão Hamburguer (visível em todos os tamanhos) */
+.menu-toggle {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; 
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dm-primaria);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+}
+
+/* Animação do botão (X quando aberto) */
+.menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 0px);
+}
+.menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, 0px);
+}
+
+
+/* Estilo da Navegação (DROPDOWN - padrão em todos os tamanhos) */
+.main-nav {
+    position: absolute;
+    top: 100%; 
+    right: 0; /* CORREÇÃO: Ancorado à direita */
+    left: auto; /* Desfaz o left: 0 do estilo anterior */
+    width: 280px; /* CORREÇÃO: Largura definida (Dropdown) */
+    max-width: 90vw; /* Limite máximo para telas muito pequenas */
+    height: auto; 
+    background-color: var(--dm-fundo-item);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--dm-borda);
+    border-top: none; 
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-150%); /* Oculto acima da tela */
+    padding: 0;
+    z-index: 999;
+}
+
+body.dark-mode .main-nav {
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.main-nav.open {
+    transform: translateY(0); /* Visível */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Sempre vertical */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.main-nav li {
+    border-bottom: 1px solid var(--dm-borda);
+    width: 100%;
+    text-align: center;
+}
+.main-nav li:last-child {
+    border-bottom: none;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--dm-primaria);
+    font-weight: bold;
+    padding: 1rem 0.5rem;
+    font-family: var(--fonte-titulos);
+    font-size: 1.1rem;
+    transition: color 0.2s, background-color 0.3s;
+    display: block; 
+}
+
+.main-nav a:hover, .main-nav a:focus {
+    color: var(--dm-secundaria);
+    background-color: var(--dm-acento-claro);
+    outline: none;
+}
+
+
+/* 3. Estilos Gerais e Conteúdo */
+
+/* Seção Hero - CORREÇÃO DE MARGEM para cabeçalho fixo */
+.hero-section {
+    text-align: center;
+    padding: 4rem 0;
+    background-color: var(--cor-terciaria); 
+    color: #FFF;
+    padding-top: 7rem;
+    margin-top: 0; 
+}
+
+.hero-section h1 {
+    font-family: var(--fonte-titulos);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #FFF; 
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    color: #F0F0F0;
+}
+
+/* Botão principal (CTA) */
+.cta-button {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: #FFF;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    transition: background-color 0.2s, transform 0.2s;
+    font-family: var(--fonte-titulos);
+}
+
+.cta-button:hover {
+    background-color: #1565C0; 
+    transform: translateY(-2px);
+}
+
+/* Estilos gerais das seções */
+section {
+    padding: 3rem 0;
+    position: relative; 
+}
+
+section:not(.hero-section):nth-of-type(odd) {
+    background-color: var(--dm-fundo-item);
+}
+
+section h2 {
+    text-align: center;
+    font-family: var(--fonte-titulos);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--dm-primaria);
+    transition: color 0.3s;
+}
+
+section p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--dm-texto-claro);
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: color 0.3s;
+}
+
+/* Seção Guia e Auxílios (Accordion) */
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background-color: var(--dm-fundo-item);
+    border: 1px solid var(--dm-borda);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.accordion-header {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 1.5rem;
+    font-family: var(--fonte-titulos);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dm-primaria);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.accordion-header:hover, .accordion-header:focus {
+    background-color: var(--dm-acento-claro);
+    outline: none;
+}
+
+/* Seta (::after) */
+.accordion-header::after {
+    content: '+';
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--dm-secundaria);
+    transition: transform 0.2s, color 0.3s;
+}
+
+.accordion-header[aria-expanded="true"]::after {
+    content: '−';
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid var(--dm-borda);
+    line-height: 1.7;
+    transition: border-top-color 0.3s;
+}
+
+.accordion-content p, 
+.accordion-content ul {
+    text-align: left;
+    color: var(--dm-texto);
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.accordion-content p {
+    margin: 0;
+}
+
+.accordion-content ul {
+    list-style: none; /* Oculta as bolinhas */
+    list-style-position: outside;
+    padding-left: 0; 
+    margin-top: 1rem;
+}
+
+.accordion-content li {
+    margin-bottom: 0.75rem;
+    color: var(--dm-texto-claro);
+}
+
+/* Regra para links que SÃO botões */
+.accordion-content a.info-link {
+    color: #FFF; 
+}
+
+/* Regra para links que NÃO SÃO botões */
+.accordion-content a:not(.info-link) {
+    color: var(--dm-secundaria);
+    font-weight: bold;
+    text-decoration: none; 
+    transition: color 0.3s;
+}
+
+.accordion-content a:not(.info-link):hover, .accordion-content a:not(.info-link):focus {
+    text-decoration: underline; 
+    color: var(--dm-primaria);
+    outline: 2px solid var(--dm-secundaria);
+    outline-offset: 2px;
+}
+
+/* Seção Universidades */
+#universidades {
+    z-index: 5;
+}
+
+.main-search-container {
+    position: relative; 
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+#uni-search-bar {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-family: var(--fonte-principal);
+    border: 1px solid var(--dm-borda);
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    background-color: var(--dm-fundo-item);
+    color: var(--dm-texto);
+    transition: all 0.3s;
+}
+
+#uni-search-bar:focus {
+    border-color: var(--dm-secundaria);
+    box-shadow: 0 0 0 3px var(--dm-primaria);
+    outline: none;
+}
+
+#uni-search-results {
+    position: absolute;
+    width: 100%;
+    background: var(--dm-fundo-item);
+    border: 1px solid var(--dm-borda);
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 999; 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+}
+
+.search-result-item {
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--dm-borda);
+    color: var(--dm-texto);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: var(--dm-acento-claro);
+}
+
+#uni-info-display {
+    max-width: 800px;
+    margin: 1rem auto 0 auto;
+}
+
+.uni-info-card {
+    background: var(--dm-fundo-item);
+    border: 1px solid var(--dm-borda);
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    padding: 1.5rem;
+    text-align: left;
+    position: relative; 
+    z-index: 5;
+    transition: all 0.3s;
+}
+
+.uni-info-card h3 {
+    font-family: var(--fonte-titulos);
+    font-size: 1.5rem;
+    color: var(--dm-primaria);
+    margin-bottom: 0.5rem;
+}
+
+.uni-info-card p {
+    font-size: 1.1rem;
+    color: var(--dm-texto);
+    margin: 0.5rem 0;
+    text-align: left;
+}
+
+.uni-info-card .info-label {
+    font-weight: bold;
+    color: var(--dm-primaria);
+}
+
+.uni-info-card .info-links {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.uni-info-card .info-link {
+    color: #FFF; 
+}
+
+.uni-info-card a:not(.info-link) {
+    color: var(--dm-secundaria);
+    font-weight: bold;
+    text-decoration: none;
+}
+.uni-info-card a:not(.info-link):hover {
+    text-decoration: underline;
+    color: var(--dm-primaria);
+}
+
+/* Seção Mapa */
+#mapa {
+    z-index: 1;
+}
+
 .map-filters {
     display: flex;
     flex-direction: column;
@@ -161,23 +543,32 @@ section h2 {
     gap: 1.5rem;
     margin-bottom: 1.5rem;
     align-items: center;
+    position: relative;
+    z-index: 5; 
 }
 
 .filter-fieldset {
-    border: 1px solid var(--cor-borda);
+    border: 1px solid var(--dm-borda);
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    background-color: var(--dm-fundo-item);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .filter-fieldset legend {
     font-size: 0.9rem;
     font-weight: bold;
-    color: var(--cor-texto);
-    padding: 0 0.5rem;
+    color: var(--dm-texto);
+    /* CORREÇÃO APLICADA (v3): Força a largura 100% e box-sizing para respeitar limites do fieldset (que é flex), sem o display: block. */
+    box-sizing: border-box; 
+    width: 100%;
+    padding: 0; 
+    text-align: center;
+    margin-bottom: 0.5rem; /* Espaçamento entre o legend e os checkboxes */
 }
 
 .filter-group {
@@ -186,244 +577,135 @@ section h2 {
     gap: 0.5rem;
 }
 
-.search-group {
-    width: 100%;
-    max-width: 400px;
-}
-
-.search-group input {
-    padding: 0.8rem;
-    border: 1px solid var(--cor-borda);
-    border-radius: 5px;
-    font-family: var(--fonte-principal);
-    width: 100%;
-    font-size: 1rem;
-}
-
 #mapa-container {
     height: 450px;
     width: 100%;
-    border: 1px solid var(--cor-borda);
+    border: 1px solid var(--dm-borda);
     border-radius: 5px;
-    background-color: var(--cor-fundo); /* Cor de fundo enquanto o mapa carrega */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 1; 
 }
 
-/* Seção Guia (Accordion) (Estilos baseados na Seção 3.1) */
-.accordion {
-    max-width: 800px;
+/* Seção Materiais (Tabela) */
+.table-responsive {
+    width: 100%;
+    /* Ativa a rolagem horizontal */
+    overflow-x: auto; 
     margin: 0 auto;
+    max-width: 850px;
 }
 
-.accordion-item {
-    background-color: var(--cor-fundo-item);
-    border: 1px solid var(--cor-borda);
-    border-radius: 5px;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
-}
-
-.accordion-header {
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    padding: 1rem 1.5rem;
-    font-family: var(--fonte-titulos);
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--cor-texto);
-}
-
-.accordion-header::after {
-    content: '+';
-    font-size: 1.5rem;
-    color: var(--cor-secundaria);
-    transition: transform 0.2s;
-}
-
-.accordion-header[aria-expanded="true"]::after {
-    content: '−';
-    /* O documento não especificava isso, mas é uma boa prática de UX */
-}
-
-.accordion-content {
-    padding: 0 1.5rem 1.5rem 1.5rem;
-    border-top: 1px solid var(--cor-borda);
-}
-
-.accordion-content p {
-    margin: 0;
-}
-
-.accordion-content ul {
-    list-style-position: inside;
-    padding-left: 0.5rem;
-    margin-top: 1rem;
-}
-
-.accordion-content li {
-    margin-bottom: 0.75rem;
-}
-
-/* Seção Materiais (Tabela) (Estilos baseados na Seção 3.2) */
 .dates-table {
-    width: 100%;
+    width: 100%; /* Base 100% da largura do contêiner */
+    min-width: 100%; 
+    margin: 0 auto;
     border-collapse: collapse;
-    margin-top: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    overflow-x: auto; /* Garante que a tabela seja rolável em telas pequenas */
-    display: block;
+    /* FORÇA O SCROLL EM CONTENT-WRAPPER */
+    display: table; 
 }
 
-.dates-table th,
-.dates-table td {
-    border: 1px solid var(--cor-borda);
-    padding: 0.75rem;
+.dates-table th, .dates-table td {
+    border: 1px solid var(--dm-borda); 
+    padding: 1rem; 
     text-align: left;
-    white-space: nowrap;
+    /* Impede quebras de linha para forçar o scroll */
+    white-space: nowrap; 
+    color: var(--dm-texto); 
+    transition: border-color 0.3s, color 0.3s;
 }
 
 .dates-table thead {
-    background-color: var(--cor-primaria);
-    color: #FFF;
+    background-color: var(--cor-terciaria);
+    color: #FFF; 
+    font-family: var(--fonte-titulos);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+/* Garante a legibilidade do texto no THEAD em todos os modos */
+.dates-table thead th {
+    color: #FFF; 
+    border-color: #3f6ca0; 
+    transition: color 0.3s, border-color 0.3s;
 }
 
 .dates-table tbody tr:nth-child(even) {
-    background-color: var(--cor-fundo);
+    background-color: var(--dm-fundo);
+}
+.dates-table tbody tr:nth-child(odd) {
+    background-color: var(--dm-fundo-item);
+}
+
+.dates-table tbody tr:hover {
+    background-color: var(--dm-acento-claro);
 }
 
 .dates-table a {
-    color: var(--cor-secundaria);
+    color: var(--dm-secundaria); 
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none; 
 }
-
 .dates-table a:hover {
     text-decoration: underline;
+    color: var(--dm-primaria);
 }
 
-/* Rodapé */
-.main-footer {
-    background-color: var(--cor-texto);
-    color: var(--cor-fundo);
-    padding: 2rem 0;
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.main-footer a {
-    color: var(--cor-secundaria);
-    font-weight: bold;
-}
-
-
-/* 3. Media Queries (Seção 1.2) */
-
-/* Estilos para Tablets e telas maiores */
-@media (min-width: 768px) {
-    .main-header .container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .map-filters {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .search-group {
-        width: auto;
-        flex-grow: 1;
-        max-width: none;
-    }
-
-    .filter-fieldset {
-        flex-wrap: nowrap;
-    }
-
-    .main-nav ul {
-        justify-content: flex-end;
-        gap: 2rem;
-    }
-
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-    
-    section {
-        padding: 4rem 0;
-    }
-    
-    section h2 {
-        font-size: 2.2rem;
-    }
-    
-    #mapa-container {
-        height: 550px;
-    }
-
-    /* Faz a tabela parar de rolar em telas maiores */
-    .dates-table {
-        display: table;
-    }
-}
-
-/* Estilos para Desktops e telas grandes */
-@media (min-width: 1024px) {
-    .hero-section h1 {
-        font-size: 3rem;
-    }
-}
-
-/* Estilos das Abas (Seção 3.2 Melhorada) */
+/* Estilos das Abas */
 .tabs-container {
-    max-width: 800px;
+    max-width: 850px;
     margin: 2rem auto 0 auto;
-    background: var(--cor-fundo-item);
-    border: 1px solid var(--cor-borda);
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background: var(--dm-fundo-item);
+    border: none; 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
 .tabs-nav {
     display: flex;
-    border-bottom: 1px solid var(--cor-borda);
-    overflow-x: auto; /* Para telas pequenas */
+    border-bottom: 2px solid var(--dm-borda);
+    overflow-x: auto; 
+    background-color: var(--dm-fundo);
+    padding: 0 0.5rem;
 }
 
 .tab-button {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.8rem; 
     font-family: var(--fonte-titulos);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.05rem; 
+    font-weight: 700; 
     cursor: pointer;
     background: transparent;
     border: none;
-    border-bottom: 3px solid transparent;
-    color: var(--cor-texto);
-    opacity: 0.7;
-    transition: all 0.2s;
-    white-space: nowrap; /* Impede que o texto do botão quebre */
+    border-bottom: 3px solid transparent; 
+    color: var(--dm-texto-claro);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    white-space: nowrap; 
+    border-radius: 6px 6px 0 0; 
+    margin-bottom: -2px; 
 }
 
 .tab-button:hover {
-    background-color: var(--cor-fundo);
+    background-color: var(--dm-acento-claro);
     opacity: 1;
+    color: var(--dm-texto);
 }
 
 .tab-button.active {
-    border-bottom: 3px solid var(--cor-secundaria);
-    color: var(--cor-primaria);
+    border-bottom: 3px solid var(--dm-secundaria);
+    color: var(--dm-primaria);
     opacity: 1;
+    background-color: var(--dm-fundo-item);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); 
+    z-index: 10;
 }
 
 .tab-panel {
-    padding: 1.5rem;
+    padding: 2rem; 
 }
 
 .tab-panel[hidden] {
@@ -432,33 +714,222 @@ section h2 {
 
 .tab-panel h3 {
     font-family: var(--fonte-titulos);
-    color: var(--cor-primaria);
-    margin-bottom: 1rem;
+    color: var(--dm-primaria); 
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    font-size: 1.3rem;
 }
 
 .tab-panel ul {
-    list-style-position: inside;
-    padding-left: 0.5rem;
+    list-style: none; 
+    list-style-position: outside;
+    padding-left: 0; 
+    font-size: 1.05rem;
 }
 
 .tab-panel li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.8rem;
+    color: var(--dm-texto-claro); 
 }
 
 .tab-panel a {
-    color: var(--cor-secundaria);
-    font-weight: bold;
-    text-decoration: none;
+    color: var(--dm-secundaria); 
+    font-weight: 600;
+    text-decoration: none; 
 }
 
 .tab-panel a:hover {
+    text-decoration: underline; 
+}
+.tab-panel a:focus {
+    outline: 2px solid var(--dm-secundaria);
+    outline-offset: 2px;
+}
+
+
+/* Botão de Toggle do Modo Escuro */
+.dark-mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--dm-acento-claro);
+    border: 1px solid var(--dm-borda);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    z-index: 1001; 
+    flex-shrink: 0; 
+}
+.dark-mode-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--dm-primaria); 
+    transition: fill 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: var(--dm-borda);
+}
+.dark-mode-toggle:focus {
+    outline: 2px solid var(--dm-secundaria);
+    outline-offset: 3px;
+}
+
+
+/* Rodapé */
+.main-footer {
+    background-color: var(--cor-terciaria); 
+    color: #FFF; 
+    text-align: center;
+    padding: 2.5rem 0;
+    margin-top: 3rem; 
+    transition: background-color 0.3s;
+}
+.body.dark-mode .main-footer {
+    background-color: #001f4c; 
+}
+
+.main-footer p {
+    margin-bottom: 0.5rem;
+    color: #EEE;
+    font-size: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.footer-links a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: var(--fonte-principal);
+    opacity: 0.9;
+    transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--dm-secundaria); 
     text-decoration: underline;
 }
-
-/* Ajuste no parágrafo da tabela */
-.dates-table + p {
-    text-align: center;
-    font-size: 1.1rem;
+.footer-links a:focus {
+    outline: 2px solid #FFF;
+    outline-offset: 3px;
 }
 
 
+/* 4. Media Queries (Desktop) */
+
+@media (min-width: 768px) {
+    
+    /* CABEÇALHO DESKTOP */
+    
+    .hero-section {
+        padding-top: 4rem;
+        margin-top: 4.5rem; 
+        min-height: 50vh; 
+    }
+
+    /* Garantir que o container use o espaço corretamente no desktop */
+    .main-header .container {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* O header-left já tem flex-shrink: 0, mas reforçamos o alinhamento */
+    .header-left {
+        flex-shrink: 0; 
+    }
+
+    /* NOTA: As regras do main-nav foram movidas para o bloco principal. 
+        Aqui, apenas mantemos a estrutura básica do dropdown. */
+    .main-nav {
+        flex-grow: 0; 
+    }
+
+    .main-nav ul {
+        flex-direction: column; 
+        gap: 0;
+    }
+
+    .main-nav li {
+        border-bottom: 1px solid var(--dm-borda); 
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav a {
+        padding: 1.2rem 0.5rem; 
+        font-size: 1.1rem;
+        border-bottom: none;
+    }
+    
+    .main-nav a:hover, .main-nav a:focus {
+        background-color: var(--dm-acento-claro);
+        border-bottom: none; 
+    }
+
+    /* FIM CABEÇALHO DESKTOP */
+    
+    section {
+        padding: 5rem 0; 
+    }
+
+    section h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    
+    .map-filters {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .filter-fieldset {
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .filter-fieldset legend {
+        width: auto;
+        text-align: left;
+        margin-bottom: 0;
+        margin-right: 1.5rem; 
+        padding: 0;
+        white-space: nowrap; 
+    }
+
+    #mapa-container {
+        height: 500px; 
+    }
+    
+    .dates-table {
+        width: 100%;
+        min-width: 100%;
+    }
+}
+
+/* Estilos para Telas Grandes (Desktop) */
+@media (min-width: 1200px) {
+    .main-nav ul {
+        gap: 0;
+    }
+
+    .hero-section h1 {
+        font-size: 3.5rem;
+    }
+}
