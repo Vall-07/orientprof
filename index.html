@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal do Futuro - O seu guia para o acesso à universidade pública. Encontre universidades, materiais de estudo e um guia passo a passo.">
+    <title>Portal do Futuro - Seu Guia para a Universidade Pública</title>
+    
+    <!-- Fontes (Seção 1.1) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS (Seção 1.1) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Nosso CSS (Seção 1.1) -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon (Seção 1.1) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!-- Cabeçalho (Seção 1.1) -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#inicio" class="logo">Portal do Futuro</a>
+            <nav class="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#guia">Guia</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#materiais">Materiais</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero (Seção 1.1) -->
+        <section id="inicio" class="hero-section">
+            <div class="container">
+                <h1>A faculdade pública é para você. A gente te mostra como.</h1>
+                <p>Um guia completo e prático, feito de aluno para aluno, focado na sua realidade e na sua região.</p>
+                <a href="#guia" class="cta-button">Comece seu Guia Passo a Passo</a>
+            </div>
+        </section>
+
+        <!-- Seção Guia (Seção 3.1) -->
+        <section id="guia" class="guide-section">
+            <div class="container">
+                <h2>Seu Guia para a Universidade</h2>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Passo 1: Entendendo o Jogo
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>O caminho para a universidade pública pode parecer confuso, mas se resume a três siglas principais:</p>
+                            <ul>
+                                <li><strong>ENEM (Exame Nacional do Ensino Médio):</strong> É a maior prova do país. Sua nota é a porta de entrada para a maioria das universidades federais através do SISU.</li>
+                                <li><strong>SISU (Sistema de Seleção Unificada):</strong> É a plataforma online do governo onde você usa sua nota do ENEM para concorrer a vagas em universidades públicas de todo o Brasil.</li>
+                                <li><strong>Vestibular Próprio:</strong> São provas feitas pela própria universidade, como a FUVEST (para a USP), o vestibular da UNICAMP e o da UNESP. Algumas delas, como a USP e a UNICAMP, também usam a nota do ENEM em processos seletivos separados (ENEM-USP, ENEM-UNICAMP).</li>
+                            </ul>
+                            <p><strong>Resumo:</strong> Você pode (e deve!) prestar o ENEM para tentar o SISU e, ao mesmo tempo, prestar os vestibulares próprios das faculdades que você mais deseja, como USP, UNESP e UNICAMP.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Passo 2: Seus Direitos e Oportunidades
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>O acesso à universidade pública no Brasil é protegido por leis que visam diminuir a desigualdade. Conheça seus principais direitos:</p>
+                            <ul>
+                                <li><strong>Cotas (Ações Afirmativas):</strong> A Lei de Cotas (Lei nº 12.711/2012) reserva vagas em todas as universidades e institutos federais para estudantes que cursaram todo o ensino médio em escolas públicas. Dentro dessas vagas, há subcotas para alunos de baixa renda e para autodeclarados pretos, pardos e indígenas (PPI). Universidades estaduais (como USP, UNESP e UNICAMP) têm seus próprios sistemas de cotas, que também incluem vagas para alunos de escola pública e PPI.</li>
+                                <li><strong>Isenção da Taxa de Inscrição:</strong> Não deixe de fazer uma prova por causa do preço! Todos os grandes vestibulares (ENEM, FUVEST, UNESP, UNICAMP) oferecem isenção total da taxa de inscrição. Geralmente, é destinada a alunos de escola pública com baixa renda familiar ou inscritos no CadÚnico. Os pedidos de isenção abrem *antes* do período normal de inscrição, então fique muito atento aos calendários!</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Passo 3: Planejando os Estudos
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Organização é a chave para dar conta de tudo. Não precisa de um cronograma de 12 horas por dia, mas sim de um plano realista:</p>
+                            <ul>
+                                <li><strong>Conheça a Prova:</strong> Cada vestibular tem um estilo. O ENEM foca mais em interpretação e atualidades (Redação vale muito!). A FUVEST (USP) é mais conteudista e densa. A UNICAMP tem questões interdisciplinares e uma segunda fase forte.</li>
+                                <li><strong>Use Recursos Gratuitos:</strong> A internet é sua maior aliada. Use canais no YouTube (como o "Descomplica", "Brasil Escola") e plataformas como a "Khan Academy" para revisar matérias.</li>
+                                <li><strong>Faça Provas Antigas:</strong> Este é o segredo. Na nossa seção "Materiais", você encontra os links para baixar as provas passadas. Faça simulados cronometrando o tempo para entender seu ritmo e onde precisa melhorar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Passo 4: A Inscrição, Sem Medo
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>O processo de inscrição pode ser burocrático, mas é só ter atenção. Aqui está um checklist:</p>
+                            <ul>
+                                <li><strong>Leia o "Edital" ou "Manual do Candidato":</strong> É o documento oficial com TODAS as regras (datas, o que levar, como funcionam as cotas, etc.). Você encontra o link na nossa seção "Materiais".</li>
+                                <li><strong>Documentos à Mão:</strong> Tenha seu RG e CPF em mãos. Você também precisará do seu CEP e, muitas vezes, responder a um questionário socioeconômico (sobre a renda e escolaridade da sua família).</li>
+                                <li><strong>Atenção ao Prazo:</strong> Não deixe para o último dia! Pague o boleto da taxa (caso não tenha isenção) o quanto antes para garantir sua inscrição.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            Passo 2: Seus Direitos e Oportunidades
+                        </button>
+                        <div class="accordion-content" hidden>
+                            <p>Conselhos práticos para o dia do exame: o que levar (caneta preta transparente, documento com foto, água, lanche leve) e o que não levar (celular tocando!). Depois da prova, acompanhe as listas de chamada e as listas de espera. Muita gente é chamada depois da primeira lista!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção Mapa (Seção 1.1 e 2.3) -->
+        <section id="mapa" class="map-section">
+            <div class="container">
+                <h2>Encontre as Universidades Perto de Você</h2>
+                
+                <div class="map-filters" role="group" aria-labelledby="filter-label">
+                    <h3 id="filter-label" class="sr-only">Filtros do Mapa</h3>
+                    
+                    <!-- Filtro de Busca (Seção 2.3) -->
+                    <div class="search-group">
+                        <label for="search-uni" class="sr-only">Buscar por nome:</label>
+                        <input type="text" id="search-uni" placeholder="Buscar por nome...">
+                    </div>
+                    
+                    <!-- Filtros Checkbox (Seção 2.3) -->
+                    <fieldset class="filter-fieldset">
+                        <legend>Tipo de Instituição</legend>
+                        <div class="filter-group">
+                            <input type="checkbox" id="filtro-publica" name="tipo" value="Pública" checked>
+                            <label for="filtro-publica">Pública</label>
+                        </div>
+                        <div class="filter-group">
+                            <input type="checkbox" id="filtro-privada" name="tipo" value="Privada">
+                            <label for="filtro-privada">Privada</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="filter-fieldset">
+                        <legend>Forma de Ingresso (se nada for marcado, mostra todos)</legend>
+                        <div class="filter-group">
+                            <input type="checkbox" id="filtro-sisu-check" name="ingresso" value="SISU">
+                            <label for="filtro-sisu-check">Aceita SISU</label>
+                        </div>
+                        <div class="filter-group">
+                            <input type="checkbox" id="filtro-enem-check" name="ingresso" value="ENEM">
+                            <label for="filtro-enem-check">Aceita ENEM (Outros)</label>
+                        </div>
+                        <div class="filter-group">
+                            <input type="checkbox" id="filtro-vestibular-proprio-check" name="ingresso" value="Vestibular Próprio">
+                            <label for="filtro-vestibular-proprio-check">Vestibular Próprio</label>
+                        </div>
+                    </fieldset>
+                </div>
+                
+                <div id="mapa-container" aria-label="Mapa interativo de universidades"></div>
+            </div>
+        </section>
+
+        <!-- Seção Materiais (Seção 1.1 e 3.2) -->
+        <section id="materiais" class="materials-section">
+            <div class="container">
+                <h2>Prepare-se: Provas e Datas Importantes</h2>
+                <p>Ficar de olho nas datas é o primeiro passo! Aqui está um calendário com os principais vestibulares (ciclo 2025), baseado nas informações do documento:</p>
+                
+                <!-- Tabela de Datas (Seção 3.2) -->
+                <table class="dates-table">
+                    <thead>
+                        <tr>
+                            <th>Exame</th>
+                            <th>Evento</th>
+                            <th>Data de Início</th>
+                            <th>Data de Fim</th>
+                            <th>Link Oficial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ENEM</td>
+                            <td>Inscrições</td>
+                            <td>26/05/2025</td>
+                            <td>13/06/2025</td>
+                            <td><a href="https://www.gov.br/inep" target="_blank" rel="noopener noreferrer">gov.br/inep</a></td>
+                        </tr>
+                        <tr>
+                            <td>ENEM</td>
+                            <td>Provas</td>
+                            <td>09/11/2025</td>
+                            <td>16/11/2025</td>
+                            <td><a href="https://www.gov.br/inep" target="_blank" rel="noopener noreferrer">gov.br/inep</a></td>
+                        </tr>
+                        <tr>
+                            <td>UNESP</td>
+                            <td>Inscrições</td>
+                            <td>04/09/2025</td>
+                            <td>10/10/2025</td>
+                            <td><a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">vestibular.unesp.br</a></td>
+                        </tr>
+                        <tr>
+                            <td>UNESP</td>
+                            <td>Prova 1ª Fase</td>
+                            <td>15/11/2025</td>
+                            <td>15/11/2025</td>
+                            <td><a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">vestibular.unesp.br</a></td>
+                        </tr>
+                        <tr>
+                            <td>UNESP</td>
+                            <td>Provas 2ª Fase</td>
+                            <td>08/12/2025</td>
+                            <td>09/12/2025</td>
+                            <td><a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">vestibular.unesp.br</a></td>
+                        </tr>
+                        <tr>
+                            <td>FATEC (1º Sem/2025)</td>
+                            <td>Inscrições</td>
+                            <td>14/11/2024</td>
+                            <td>11/12/2024</td>
+                            <td><a href="https://www.vestibularfatec.com.br" target="_blank" rel="noopener noreferrer">vestibularfatec.com.br</a></td>
+                        </tr>
+                        <tr>
+                            <td>FATEC (1º Sem/2025)</td>
+                            <td>Prova</td>
+                            <td>12/01/2025</td>
+                            <td>12/01/2025</td>
+                            <td><a href="https://www.vestibularfatec.com.br" target="_blank" rel="noopener noreferrer">vestibularfatec.com.br</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem;">Além das datas, acesse os sites oficiais para baixar provas e gabaritos anteriores. Praticar com provas antigas é a melhor forma de estudar!</p>
+                
+                <!-- (Seção 3.2 Melhorada) - Estrutura de Abas -->
+                <p style="margin-top: 2rem;">Acesse os links oficiais para provas e gabaritos anteriores:</p>
+                
+                <div class="tabs-container">
+                    <div class="tabs-nav" role="tablist" aria-label="Abas de materiais">
+                        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="tab-content-enem" id="tab-enem">ENEM</button>
+                        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-unesp" id="tab-unesp">UNESP</button>
+                        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-content-fatec" id="tab-fatec">FATEC</button>
+                    </div>
+                    
+                    <div class="tabs-content">
+                        <div class="tab-panel active" id="tab-content-enem" role="tabpanel" aria-labelledby="tab-enem">
+                            <h3>Provas e Gabaritos do ENEM</h3>
+                            <p>O INEP, órgão do governo, disponibiliza todas as provas e gabaritos oficiais. É o melhor lugar para estudar.</p>
+                            <ul>
+                                <li><a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">Acessar Provas e Gabaritos Oficiais do ENEM (Portal INEP)</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-content-unesp" role="tabpanel" aria-labelledby="tab-unesp" hidden>
+                            <h3>Provas e Gabaritos da UNESP (VUNESP)</h3>
+                            <p>A UNESP aplica seu vestibular através da fundação VUNESP, que também disponibiliza as provas anteriores.</p>
+                            <ul>
+                                <li><a href="https://www.vunesp.com.br/provas-e-gabaritos" target="_blank" rel="noopener noreferrer">Acessar Provas Anteriores da VUNESP</a></li>
+                                <li><a href="https://guiadoestudante.abril.com.br/universidades/unesp-baixe-provas-e-gabaritos-de-anos-anteriores/" target="_blank" rel="noopener noreferrer">Guia do Estudante - Provas UNESP</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="tab-content-fatec" role="tabpanel" aria-labelledby="tab-fatec" hidden>
+                            <h3>Provas e Gabaritos da FATEC</h3>
+                            <p>O site oficial do Vestibular FATEC é a fonte correta para encontrar as provas e gabaritos dos semestres anteriores.</p>
+                            <ul>
+                                <li><a href="https://www.vestibularfatec.com.br/anteriores/" target="_blank" rel="noopener noreferrer">Acessar Provas e Gabaritos Anteriores - FATEC</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim da Estrutura de Abas -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé (Seção 1.1) -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2025 Portal do Futuro. Um projeto de código aberto.</p>
+            <p>Quer contribuir? <a href="https://github.com/seu-usuario/portal-do-futuro" target="_blank" rel="noopener noreferrer">Visite nosso repositório no GitHub!</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts (Seção 1.1) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
